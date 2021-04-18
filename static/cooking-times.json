@@ -1,0 +1,22 @@
+{
+  "fish": {
+    "underCooked": 5,
+    "cooked": 10,
+    "burnt": 80
+  },
+  "trophy": {
+    "underCooked": 80,
+    "cooked": 90,
+    "burnt": 180
+  },
+  "meat": {
+    "underCooked": 50,
+    "cooked": 60,
+    "burnt": 120
+  },
+  "beast": {
+    "underCooked": 100,
+    "cooked": 120,
+    "burnt": 240
+  }
+}

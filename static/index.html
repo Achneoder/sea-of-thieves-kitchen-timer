@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sea of Thieves Cooking Timer</title>
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
+  </head>
+  <body id="body">
+    <h1>Sea of Thieves Cooking Timer</h1>
+
+    <select id="food-select">
+      <option value="fish" selected>Fish</option>
+      <option value="trophy">Trophy Fish</option>
+      <option value="meat">Meat</option>
+      <option value="beast">Kraken/Megalodon</option>
+    </select>
+
+    <button id="timerButton">Start</button>
+
+    <span id="timeRemaining">00:00</span>
+    <!-- You can also require other files to run in this process -->
+    <script src="../dist/renderer.js"></script>
+  </body>
+</html>
