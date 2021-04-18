@@ -47,11 +47,18 @@ window.addEventListener("DOMContentLoaded", () => {
               break;
             case Condition.UNDER_COOKED:
               body!.style['backgroundColor'] = 'orange';
+              audio.currentTime = 0;
               audio.play();
               break;
             case Condition.COOKED:
               body!.style['backgroundColor'] = 'green';
-              audio.play().then(() => audio.play);
+              audio.currentTime = 0;
+              audio.play().then(() => {
+                setTimeout(() => {
+                  audio.currentTime = 0;
+                  audio.play;
+                }, 1500);
+              });
               break;
             case Condition.BURNT:
               body!.style['backgroundColor'] = 'red';
