@@ -1,7 +1,7 @@
 {
-  "name": "sea-of-thieves-cooking-timer",
+  "name": "sea-of-thieves-kitchen-timer",
   "version": "1.0.0",
-  "description": "Sea of Thieves Cooking Timer",
+  "description": "Sea of Thieves Kitchen Timer",
   "main": "dist/index.js",
   "scripts": {
     "build": "npx tsc",
