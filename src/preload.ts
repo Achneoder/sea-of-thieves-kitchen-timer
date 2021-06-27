@@ -1,7 +1,9 @@
 // All of the Node.js APIs are available in the preload process.
 // It has the same sandbox as a Chrome extension.
+import { getCookingTimes } from "./helper";
 import { startTimer, stopTimer } from "./timer";
 import { Condition } from "./types/condition.enum";
+import { Food } from "./types/food.enum";
 
 let timerStarted = false;
 
@@ -23,24 +25,22 @@ window.addEventListener("DOMContentLoaded", () => {
   };
 
   const button: HTMLElement | null = document.getElementById('timerButton');
-  const food = document.getElementById('food-select');
+  const food = document.getElementById('food-select') as HTMLElement;
   const body = document.getElementById('body');
 
   //@ts-ignore
   button?.addEventListener('click', () => {
-    console.log('click')
     timerStarted = !timerStarted;
     if (timerStarted) {
-      //@ts-ignore
-
       button!.innerText = 'Stop';
+      //@ts-ignore
+      const times = getCookingTimes(food.value as Food);
+      replaceText('perfectCookingTime', formatTime(times.cooked))
       //@ts-ignore
       startTimer((food!.value as Food), (condition: Condition, currentTime: number) => {
         replaceText('timeRemaining', formatTime(currentTime));
-        console.log('quick condition', condition);
         if (!currentState[condition]) {
           currentState[condition] = true;
-          console.log('condition', condition);
           switch (condition) {
             case Condition.RAW:
               body!.style['backgroundColor'] = 'red';
@@ -67,11 +67,10 @@ window.addEventListener("DOMContentLoaded", () => {
         }
       });
     } else {
-      //@ts-ignore
-
       button.innerText = 'Start';
       stopTimer();
       replaceText('timeRemaining', '00:00')
+      replaceText('perfectCookingTime', '00:00')
       resetState();
       body!.style['backgroundColor'] = 'white';
     }

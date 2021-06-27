@@ -1,7 +1,7 @@
+import { getCookingTimes } from "./helper";
 import { Condition } from "./types/condition.enum";
-import { CookingDurations } from "./types/cooking-durations.interface";
+import { CookingTime } from "./types/cooking-time.interface";
 import { Food } from "./types/food.enum";
-const cookingDuration: CookingDurations = require(__dirname + '/../static/cooking-times.json');
 
 let interval: NodeJS.Timeout | undefined;
 let currentTime = 0
@@ -9,10 +9,7 @@ const intervalTime = 100;
 
 export function startTimer(food: Food, listener: (condition: Condition, currentTimeMS: number) => void): void {
   stopTimer();
-  const times = { ...cookingDuration[food] };
-  times.underCooked = times.underCooked * 1000;
-  times.cooked = times.cooked * 1000;
-  times.burnt = times.burnt * 1000;
+  const times: CookingTime = getCookingTimes(food);
   interval = setInterval(() => {
     currentTime += intervalTime;
 
